@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("enter"):
 		_on_button_pressed()
 
 func _on_button_pressed() -> void:
