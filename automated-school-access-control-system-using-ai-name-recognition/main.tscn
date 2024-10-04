@@ -1,7 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnkf1s8foth7g"]
+[gd_scene load_steps=6 format=3 uid="uid://dnkf1s8foth7g"]
 
 [ext_resource type="Texture2D" uid="uid://c4mh7tvfmdoq" path="res://1.0-circle.png" id="1_d5x4f"]
 [ext_resource type="Script" path="res://main.gd" id="1_xefqa"]
+
+[sub_resource type="Curve" id="Curve_jeqn0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.374172, 0.761164), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vy6qb"]
+curve = SubResource("Curve_jeqn0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_54xr2"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -9.19
+linear_accel_max = 12.99
+radial_accel_min = -14.29
+radial_accel_max = 11.69
+tangential_accel_min = -35.06
+tangential_accel_max = 25.97
+damping_max = 41.9
+scale_min = 0.0
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_vy6qb")
+collision_use_scale = true
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -46,26 +72,64 @@ theme_override_font_sizes/font_size = 30
 
 [node name="Name" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "Automated School Access Control System Using AI Name Recognition"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "-OrzLab-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Nhập tên học sinh:"
+
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(1000, 100)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Chạy"
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node"]
+position = Vector2(574, -305.661)
+scale = Vector2(1, 1.00111)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_54xr2")
+texture = ExtResource("1_d5x4f")
+one_shot = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Node"]
+position = Vector2(-671, -296.671)
+scale = Vector2(1, 1.00111)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_54xr2")
+texture = ExtResource("1_d5x4f")
+one_shot = true
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Node"]
+position = Vector2(-32, 314.651)
+scale = Vector2(1, 1.00111)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_54xr2")
+texture = ExtResource("1_d5x4f")
+one_shot = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

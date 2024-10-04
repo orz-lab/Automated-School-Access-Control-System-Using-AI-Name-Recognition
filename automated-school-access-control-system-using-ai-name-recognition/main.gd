@@ -15,6 +15,9 @@ func _input(event: InputEvent):
 		_on_button_pressed()
 
 func _on_button_pressed() -> void:
-	var output = str("Đã nhập diện được học sinh ", $VBoxContainer/TextEdit.text)
+	var output = str("Đã nhập diện được học sinh ", $VBoxContainer/HBoxContainer2/TextEdit.text)
 	$VBoxContainer/HBoxContainer/Output.text = output
-	$VBoxContainer/TextEdit.text = ""
+	$VBoxContainer/HBoxContainer2/TextEdit.text = ""
+	$Node/GPUParticles2D2.emitting = 1
+	$Node/GPUParticles2D.emitting = 1
+	$Node/GPUParticles2D3.emitting = 1
